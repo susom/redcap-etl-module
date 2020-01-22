@@ -71,6 +71,8 @@ class MysqlDbConnection extends DbConnection
 
         if ($this->mysqli->connect_errno) {
             $message = 'MySQL error ['.$this->mysqli->connect_errno.']: '.$this->mysqli->connect_error;
+
+            \Plugin::log($this->mysqli);
             $code = EtlException::DATABASE_ERROR;
             throw new EtlException($message, $code);
         }
