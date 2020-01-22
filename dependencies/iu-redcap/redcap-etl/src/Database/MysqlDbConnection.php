@@ -64,7 +64,6 @@ class MysqlDbConnection extends DbConnection
             $this->mysqli->ssl_set(null, null, $caCertFile, null, null);
             $this->mysqli->options(MYSQLI_OPT_SSL_VERIFY_SERVER_CERT, true);
         }
-
         \Plugin::log("Inited - trying to connect");
 
         $this->mysqli->real_connect($host, $username, $password, $database, $port, null, $flags);
