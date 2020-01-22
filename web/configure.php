@@ -91,6 +91,7 @@ try {
         # update the configuration properties with the POST values
         #---------------------------------------------------------------
         if (!empty($submitValue) && strcasecmp($submitValue, 'Cancel')) {
+
             if (!isset($_POST[Configuration::API_TOKEN_USERNAME])) {
                 $_POST[Configuration::API_TOKEN_USERNAME] = '';
             }
