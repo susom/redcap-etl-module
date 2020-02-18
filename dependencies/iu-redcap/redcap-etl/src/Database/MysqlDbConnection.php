@@ -56,23 +56,17 @@ class MysqlDbConnection extends DbConnection
         if ($ssl) {
             $flags = MYSQLI_CLIENT_SSL;
         }
-        \Plugin::log($host,$username,$password,$database,$port,$flags);
-        \Plugin::log(MYSQLI_OPT_SSL_VERIFY_SERVER_CERT);
 
         $this->mysqli = mysqli_init();
         if ($sslVerify && !empty($caCertFile)) {
             $this->mysqli->ssl_set(null, null, $caCertFile, null, null);
             $this->mysqli->options(MYSQLI_OPT_SSL_VERIFY_SERVER_CERT, true);
         }
-        \Plugin::log("Inited - trying to connect");
-
         $this->mysqli->real_connect($host, $username, $password, $database, $port, null, $flags);
 
 
         if ($this->mysqli->connect_errno) {
             $message = 'MySQL error ['.$this->mysqli->connect_errno.']: '.$this->mysqli->connect_error;
-
-            \Plugin::log($this->mysqli);
             $code = EtlException::DATABASE_ERROR;
             throw new EtlException($message, $code);
         }

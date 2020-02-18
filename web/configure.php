@@ -712,6 +712,7 @@ Configuration form
         </table>
     </fieldset>
     
+<?php if (SUPER_USER) { ?>
     <fieldset class="config">
         <legend>Load Settings</legend>
        
@@ -760,7 +761,8 @@ Configuration form
             </tbody>
         </table>
     </fieldset>
-    
+ <?php } ?>
+
     <fieldset class="config">
         <legend>Processing Settings</legend>
         <table>
@@ -776,13 +778,11 @@ Configuration form
                         </div>
                     </td>
                 </tr>
-     
-     
-    </tbody>
+            </tbody>
         </table>
-                <fieldset class="config-nested">
-                <legend>Database Tables</legend>
-                        <table>
+        <fieldset class="config-nested">
+        <legend>Database Tables</legend>
+        <table>
             <tbody>
           
                 <!-- TABLE NAME PREFIX -->
@@ -926,6 +926,7 @@ Configuration form
         </table>
         </fieldset>
 
+<?php if (SUPER_USER) { ?>
         <fieldset class="config-nested">
         <legend>Post-Processing SQL</legend>        
         <table>
@@ -955,6 +956,7 @@ Configuration form
             </tbody>
         </table>
         </fieldset>
+<?php } ?>
     </fieldset>
     
     <fieldset class="config">
